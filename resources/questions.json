@@ -1,0 +1,14 @@
+{
+    "questions": [
+        "Who is the player with more points if you consider all registered matches and how many points did he score during his carreer?",
+        "Who are the top five players with more points if you consider all registered matches and how many points did they score during their carreer?",
+        "What is the name of the player who scored the most points in a game and how many points did he scored in that game?",
+        "Who are the top five scoring players in a single match?",
+        "Can you tell me the date and the team's home name of the game with the most points scored by the home team? Please, also add the score of the game and the name of the teams that participates in the game.",
+        "What are there mascots with repeated names? Exclude empty names and order the results starting from the most repeated names to the least ones",
+        "What is the most common tax class of mascot?",
+        "What is the name of Bradley's basketball market mascot?",
+        "Could you tell me the mascot's genus of the Illinois State market?",
+        "What is the top ten most common mascot's genus?"
+    ]
+}

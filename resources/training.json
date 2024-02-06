@@ -1,0 +1,97 @@
+{
+    "training": [
+        {
+            "type": "documentation",
+            "value": "Our business defines mascot as a character that represents the basketball team"
+        },
+        {
+            "type": "documentation",
+            "value": "The mascot belongs to a basketball team"
+        },
+        {
+            "type": "documentation",
+            "value": "The column that represents the mascot's name is called 'mascot_name'"
+        },
+        {
+            "type": "documentation",
+            "value": "Each mascot has a type and the column in the database that represents the type is called 'mascot'"
+        },
+        {
+            "type": "documentation",
+            "value": "We also call market to basketball teams"
+        },
+        {
+            "type": "documentation",
+            "value": "Each mascot has a genus, the column that represents the mascot's genus is called 'tax_genus'"
+        },
+        {
+            "type": "documentation",
+            "value": "Each mascot has a tax class, the column that represents the mascot's genus is called 'tax_class'"
+        },
+        {
+            "type": "documentation",
+            "value": "We also have a historical record of player performances in games. This information is stored in the 'mbb_players_games_sr' table"
+        },
+        {
+            "type": "documentation",
+            "value": "The 'mbb_players_games_sr' table contains the player statistics of a player in a given match"
+        },
+        {
+            "type": "documentation",
+            "value": "The column 'points' respresents the number of points that a given player has made in that game"
+        },
+        {
+            "type": "documentation",
+            "value": "The column 'full_name' respresents the player name"
+        },
+        {
+            "type": "documentation",
+            "value": "The game's date is also called the scheduled date"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the list of mascots?",
+            "value": "SELECT COUNT(*) FROM `{bigquery.project.id}.ncaa_basketball.mascots`"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the list of most common type of mascots?",
+            "value": "SELECT mascot, COUNT(mascot) total FROM `{bigquery.project.id}.ncaa_basketball.mascots` GROUP BY mascot ORDER BY COUNT(mascot) DESC"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the list of mascot genus?",
+            "value": "SELECT tax_genus FROM `{bigquery.project.id}.ncaa_basketball.mascots` where tax_genus is not null"
+        },
+        {
+            "type": "sql",
+            "question": "What is the name of the Drexel's team?",
+            "value": "SELECT mascot_name FROM `{bigquery.project.id}.ncaa_basketball.mascots` WHERE market = 'Drexel' LIMIT 1"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the list of mascot names?",
+            "value": "SELECT mascot_name FROM `{bigquery.project.id}.ncaa_basketball.mascots` where mascot_name is not null"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the list of the player statistics per game?",
+            "value": "SELECT * FROM `{bigquery.project.id}.ncaa_basketball.mbb_players_games_sr`"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the infromation of the games?",
+            "value": "SELECT * FROM `{bigquery.project.id}.ncaa_basketball.mbb_games_sr`"
+        },
+        {
+            "type": "sql",
+            "question": "What is the name of the player who scored the most points in a game and how many points did he scored in that game? Also tell me the name and scores of the home and away teams of that match",
+            "value": "SELECT player_statistics.full_name, player_statistics.points, games.h_market, games.a_market, games.h_points, games.a_points FROM  `{bigquery.project.id}.ncaa_basketball.mbb_players_games_sr` player_statistics  inner join `{bigquery.project.id}..mbb_games_sr` games  on player_statistics.game_id = games.game_id WHERE player_statistics.points = (SELECT MAX(points) FROM `{bigquery.project.id}..mbb_players_games_sr`)"
+        },
+        {
+            "type": "sql",
+            "question": "Can you give me the date of the game_id='ffb463a4-dd3c-4ed9-b503-311b95ef0295'?",
+            "value": "SELECT scheduled_date FROM `{bigquery.project.id}.ncaa_basketball.mbb_games_sr` where game_id = 'ffb463a4-dd3c-4ed9-b503-311b95ef0295'"
+        }
+    ]
+}

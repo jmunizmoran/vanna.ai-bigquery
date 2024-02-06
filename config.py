@@ -1,0 +1,6 @@
+credentials_json_path='./resources/credentials.json'
+bigquery_project_id='ADD YOUR GOOGLE CLOUD PROJECT ID HERE'
+openai_api_key='ADD YOUR OPENAI API KEY HERE'
+openai_model='gpt-3.5-turbo-16k'
+training_model_json_path='./resources/training.json'
+questions_json_path='./resources/questions.json'
